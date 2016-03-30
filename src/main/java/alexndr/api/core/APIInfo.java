@@ -12,14 +12,13 @@ public class APIInfo {
 	public static final String NAME = "SimpleCore API";
 	public static final String DESCRIPTION = "An API for easy creation of plugins such as SimpleOres, Fusion and others.";
 	public static final String VERSION = "@MODVERSION@";
-	public static final String URL = "http://bit.ly/SimpleOres";
+	public static final String URL = "http://minecraft.curseforge.com/projects/simplecore-api";
 	public static final List<String> AUTHORS = Lists.newArrayList("AleXndrTheGr8st");
 	public static final String CREDITS = "Created by AleXndrTheGr8st.";
 	public static final String LOGO = "/assets/simplecore/logos/SimpleCore.png";
 	public static final String PARENT = "";
 	public static final boolean USEDEPENDENCYINFO = true;
-	public static final String VERSIONURL = "https://dl.dropboxusercontent.com/u/66466201/Mods/SimpleCore%20API/SimpleCore%20Version.txt";
-
+	public static final String VERSIONURL = "";
 	// use mcmod.info instead, so that tools that look at the jar file such as MultiMC
 	// and possibly Curse Client can get modinfo -- Sinhika
 //	public static void setModInfoProperties(FMLPreInitializationEvent event) {

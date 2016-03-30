@@ -26,7 +26,7 @@ import com.google.common.collect.Lists;
 /**
  * @author AleXndrTheGr8st
  */
-@Mod(modid = APIInfo.ID, name = APIInfo.NAME, version = APIInfo.VERSION)
+@Mod(modid = APIInfo.ID, name = APIInfo.NAME, version = APIInfo.VERSION, updateJSON=APIInfo.VERSIONURL)
 public class SimpleCoreAPI 
 {
 	@SidedProxy(clientSide = "alexndr.api.core.ProxyClient", serverSide = "alexndr.api.core.ProxyCommon")
@@ -53,9 +53,6 @@ public class SimpleCoreAPI
 		// APIInfo.setModInfoProperties(event); // USE mcmod.info file instead -- Sinhika
 		APISettings.createOrLoadSettings(event);
 		LogHelper.loggerSetup();
-//		if(APISettings.updateChecker.asBoolean()) {
-//			UpdateChecker checker = new UpdateChecker(APIInfo.ID, APIInfo.VERSION, APIInfo.VERSIONURL);
-//		}
 		
 		//Content
 		addVanillaTabs();

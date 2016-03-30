@@ -8,7 +8,7 @@
 "logoFile": "/assets/simplecore/logos/SimpleCore.png",
 "mcversion": "${mcversion}",
 "url": "http://minecraft.curseforge.com/projects/simplecore-api",
-"updateUrl": "",
+"updateUrl": "http://minecraft.curseforge.com/projects/simplecore-api/files",
 "authorList": [ "AleXndrTheGr8st", "Sinhika" ],
 "parent":"",
 "screenshots": [],
