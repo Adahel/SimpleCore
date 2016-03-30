@@ -18,7 +18,7 @@ public class APIInfo {
 	public static final String LOGO = "/assets/simplecore/logos/SimpleCore.png";
 	public static final String PARENT = "";
 	public static final boolean USEDEPENDENCYINFO = true;
-	public static final String VERSIONURL = "";
+	public static final String VERSIONURL = "https://raw.githubusercontent.com/Sinhika/SimpleCore/dev1.8.9/update.json";
 	// use mcmod.info instead, so that tools that look at the jar file such as MultiMC
 	// and possibly Curse Client can get modinfo -- Sinhika
 //	public static void setModInfoProperties(FMLPreInitializationEvent event) {

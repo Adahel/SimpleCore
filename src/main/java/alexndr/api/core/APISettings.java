@@ -40,14 +40,10 @@ public class APISettings {
 			//Toggles
 			ConfigEntry toggles = new ConfigEntry("SimpleCore Toggles", "Toggles");
 				toggles.createNewValue("VerboseLogging").setActive().setDataType("@B").setCurrentValue("false").setDefaultValue("false");
-				toggles.createNewValue("GlobalUpdateChecking").setActive().setDataType("@B").setCurrentValue("true").setDefaultValue("true");
-				toggles.createNewValue("UpdateChecker").setActive().setDataType("@B").setCurrentValue("true").setDefaultValue("true");
 				toggles.createNewValue("Tabs").setActive().setDataType("@B").setCurrentValue("true").setDefaultValue("true");
 				toggles.createNewValue("SeparateTabs").setActive().setDataType("@B").setCurrentValue("true").setDefaultValue("true");
 				toggles = settings.get(toggles);
 				verboseLogging = toggles.getValueByName("VerboseLogging");
-				updateChecking = toggles.getValueByName("GlobalUpdateChecking");
-				updateChecker = toggles.getValueByName("UpdateChecker");
 				tabs = toggles.getValueByName("Tabs");
 				separateTabs = toggles.getValueByName("SeparateTabs");
 		}
@@ -60,6 +56,6 @@ public class APISettings {
 		}
 	}
 	
-	public static ConfigValue verboseLogging, updateChecking, updateChecker;
+	public static ConfigValue verboseLogging;
 	public static ConfigValue tabs, separateTabs, customGeneration;
 }
