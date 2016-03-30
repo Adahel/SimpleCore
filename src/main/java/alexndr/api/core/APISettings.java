@@ -16,7 +16,7 @@ public class APISettings {
 	
 	public static void createOrLoadSettings(FMLPreInitializationEvent event) {
 		settings.setModName("SimpleCore API");
-		File configDir = new File(event.getModConfigurationDirectory() + "/AleXndr", "SimpleCore API Settings.xml");
+		File configDir = new File(event.getModConfigurationDirectory() + "/AleXndr", "SimpleCoreAPISettings.xml");
 		settings.setFile(configDir);
 		
 		LogHelper.verbose("Loading API Settings...");
