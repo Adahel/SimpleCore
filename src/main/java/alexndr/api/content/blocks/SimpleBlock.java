@@ -21,7 +21,7 @@ import alexndr.api.registry.Plugin;
 /**
  * @author AleXndrTheGr8st
  */
-public class SimpleBlock extends Block{
+public class SimpleBlock extends Block {
 	protected Plugin plugin;
 	protected Material material;
 	protected ContentCategories.Block category;

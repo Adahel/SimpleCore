@@ -16,6 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import alexndr.api.content.inventory.SimpleTab;
 import alexndr.api.helpers.events.CommonEventHelper;
 import alexndr.api.helpers.game.OreGenerator;
+import alexndr.api.helpers.game.TabHelper;
 import alexndr.api.logger.LogHelper;
 import alexndr.api.registry.ContentCategories;
 import alexndr.api.registry.ContentRegistry;
@@ -115,7 +116,8 @@ public class SimpleCoreAPI
 				simpleTools = new SimpleTab(SimpleCoreAPI.plugin, "SimpleTools", ContentCategories.CreativeTab.TOOLS);
 				simpleCombat = new SimpleTab(SimpleCoreAPI.plugin, "SimpleCombat", ContentCategories.CreativeTab.COMBAT);
 			}
-		}
+		} //
+		TabHelper.setTabInitDone(true);
 	} // end tabPreInit()
 	
 	/**
