@@ -1,0 +1,12 @@
+bin/
+build/
+libs/
+.gradle/
+.settings/
+eclipse/
+extras/
+gradle/
+gradlew*
+*.log
+*.jar
+*.class
