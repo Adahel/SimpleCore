@@ -52,10 +52,10 @@ public class SimpleItem extends Item
 		List<SimpleItem> list = Lists.newArrayList();
 		list.add(this);
 		this.modId = modId;
-		if(this.itemWithModIdMap.containsKey(modId))
-			this.itemWithModIdMap.get(modId).add(this);
+		if(SimpleItem.itemWithModIdMap.containsKey(modId))
+			SimpleItem.itemWithModIdMap.get(modId).add(this);
 		else
-			this.itemWithModIdMap.put(modId, list);
+			SimpleItem.itemWithModIdMap.put(modId, list);
 		return this;
 	}
 	
@@ -94,6 +94,7 @@ public class SimpleItem extends Item
 		return this;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List list, boolean bool)
 	{

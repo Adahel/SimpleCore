@@ -21,6 +21,7 @@ public class SimpleCoreAPI {
 	@SidedProxy(clientSide = "alexndr.api.core.ProxyClient", serverSide = "alexndr.api.core.ProxyCommon")
 	public static ProxyCommon proxy;
 
+	@SuppressWarnings("unused")
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		// Register Event Bus

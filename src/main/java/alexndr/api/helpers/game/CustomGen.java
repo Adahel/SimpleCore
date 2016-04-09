@@ -49,7 +49,7 @@ public class CustomGen
 	 */
 	private static int splitCustomRuleInts(String customRule, String requestedComponent)
 	{
-		List ruleParts = Lists.newArrayList(Splitter.on(',').trimResults().split(customRule));
+		List<String> ruleParts = Lists.newArrayList(Splitter.on(',').trimResults().split(customRule));
 		
 		if(requestedComponent == "dimIdMin") {
 				if(ruleParts.get(0).toString().equals("ALL"))
@@ -96,9 +96,9 @@ public class CustomGen
 	 */
 	private static Block splitCustomRuleBlocks(String customRule, String requestedComponent)
 	{
-		List ruleParts = Lists.newArrayList(Splitter.on(',').trimResults().split(customRule));
-		List hostBlockInfo = Lists.newArrayList(Splitter.on('@').split(ruleParts.get(1).toString()));
-		List spawningBlockInfo = Lists.newArrayList(Splitter.on('@').split(ruleParts.get(2).toString()));
+		List<String> ruleParts = Lists.newArrayList(Splitter.on(',').trimResults().split(customRule));
+		List<String> hostBlockInfo = Lists.newArrayList(Splitter.on('@').split(ruleParts.get(1).toString()));
+		List<String> spawningBlockInfo = Lists.newArrayList(Splitter.on('@').split(ruleParts.get(2).toString()));
 		
 		if(requestedComponent == "blockToReplace") {
 				Block hostBlock = (Block) Block.blockRegistry.getObject(hostBlockInfo.get(0).toString());

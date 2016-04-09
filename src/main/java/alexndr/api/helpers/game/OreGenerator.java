@@ -20,8 +20,10 @@ import cpw.mods.fml.common.IWorldGenerator;
 public class OreGenerator implements IWorldGenerator
 {
 	public static OreGenerator INSTANCE = new OreGenerator();
-	private static HashMap<Integer, List> genMap = new HashMap<Integer, List>();
-	private static HashMap<String, List> customGenMap = new HashMap<String, List>();
+	private static HashMap<Integer, List<GeneratorEntry>> genMap 
+				= new HashMap<Integer, List<GeneratorEntry>>();
+	private static HashMap<String, List<GeneratorEntry>> customGenMap 
+				= new HashMap<String, List<GeneratorEntry>>();
 	
 	/**
 	 * Registers a new ore to be generated. Does not allow ReplaceableOreGenBlocks to be disabled.
@@ -63,13 +65,13 @@ public class OreGenerator implements IWorldGenerator
 			LogHelper.warning("A Custom Generation rule for block " + entry.blockToGenerate + " with dimension range: " + entry.dimIdMin + " - " + entry.dimIdMax + " is invalid.");
 		}
 		
-		if(this.customGenMap.containsKey(key))
-			this.customGenMap.get(key).add(entry);
+		if(OreGenerator.customGenMap.containsKey(key))
+			OreGenerator.customGenMap.get(key).add(entry);
 		else
 		{
-			ArrayList list = Lists.newArrayList();
+			ArrayList<GeneratorEntry> list = Lists.newArrayList();
 			list.add(entry);
-			this.customGenMap.put(key, list);
+			OreGenerator.customGenMap.put(key, list);
 		}
 	}
 	
@@ -88,13 +90,13 @@ public class OreGenerator implements IWorldGenerator
 	{
 		GeneratorEntry entry = new GeneratorEntry(dimension, blockToGenerate, blockToReplace, disableReplaceableOreGenBlocks, veinSize, spawnRate, maxSpawnHeight, minSpawnHeight);
 		
-		if(this.genMap.containsKey(entry.dimension))
-			this.genMap.get(entry.dimension).add(entry);
+		if(OreGenerator.genMap.containsKey(entry.dimension))
+			OreGenerator.genMap.get(entry.dimension).add(entry);
 		else
 		{
-			ArrayList list = Lists.newArrayList();
+			ArrayList<GeneratorEntry> list = Lists.newArrayList();
 			list.add(entry);
-			this.genMap.put(entry.dimension, list);
+			OreGenerator.genMap.put(entry.dimension, list);
 		}
 	}
 	

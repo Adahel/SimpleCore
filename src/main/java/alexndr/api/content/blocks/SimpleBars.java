@@ -114,6 +114,7 @@ public class SimpleBars extends BlockPane{
 		return par1IBlockAccess.getBlock(par2, par3, par4) == this ? false : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void addCollisionBoxesToList(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity) {
 		boolean flag = this.canPaneConnectTo(par1World, par2, par3, par4 - 1, ForgeDirection.NORTH);

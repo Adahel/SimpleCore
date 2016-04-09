@@ -112,6 +112,7 @@ public class SimpleShears extends ItemShears
 		return this;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List list, boolean bool)
 	{

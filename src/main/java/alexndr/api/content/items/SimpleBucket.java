@@ -75,10 +75,10 @@ public class SimpleBucket extends ItemBucket
 		List<SimpleBucket> list = Lists.newArrayList();
 		list.add(this);
 		this.modId = modId;
-		if(this.bucketWithModIdMap.containsKey(modId))
-			this.bucketWithModIdMap.get(modId).add(this);
+		if(SimpleBucket.bucketWithModIdMap.containsKey(modId))
+			SimpleBucket.bucketWithModIdMap.get(modId).add(this);
 		else
-			this.bucketWithModIdMap.put(modId, list);
+			SimpleBucket.bucketWithModIdMap.put(modId, list);
 		return this;
 	}
 	
@@ -231,6 +231,7 @@ public class SimpleBucket extends ItemBucket
 		}
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List list, boolean bool)
 	{

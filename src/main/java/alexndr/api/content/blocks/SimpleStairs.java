@@ -40,10 +40,10 @@ public class SimpleStairs extends BlockStairs{
 		List<SimpleStairs> list = Lists.newArrayList();
 		list.add(this);
 		this.modId = modId;
-		if(this.stairsWithModIdMap.containsKey(modId))
-			this.stairsWithModIdMap.get(modId).add(this);
+		if(SimpleStairs.stairsWithModIdMap.containsKey(modId))
+			SimpleStairs.stairsWithModIdMap.get(modId).add(this);
 		else
-			this.stairsWithModIdMap.put(modId, list);
+			SimpleStairs.stairsWithModIdMap.put(modId, list);
 		return this;
 	}
 	

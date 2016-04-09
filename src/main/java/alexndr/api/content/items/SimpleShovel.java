@@ -102,6 +102,7 @@ public class SimpleShovel extends ItemSpade
 		return this;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
@@ -113,7 +114,8 @@ public class SimpleShovel extends ItemSpade
 	@Override
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 	{
-		return this.toolMaterial.customCraftingMaterial == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+		return this.toolMaterial.getRepairItemStack().getItem() == par2ItemStack.getItem() 
+				? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 	
 	@Override

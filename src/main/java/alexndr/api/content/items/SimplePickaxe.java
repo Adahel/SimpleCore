@@ -63,10 +63,10 @@ public class SimplePickaxe extends ItemPickaxe
 		List<SimplePickaxe> list = Lists.newArrayList();
 		list.add(this);
 		this.modId = modId;
-		if(this.pickaxeWithModIdMap.containsKey(modId))
-			this.pickaxeWithModIdMap.get(modId).add(this);
+		if(SimplePickaxe.pickaxeWithModIdMap.containsKey(modId))
+			SimplePickaxe.pickaxeWithModIdMap.get(modId).add(this);
 		else
-			this.pickaxeWithModIdMap.put(modId, list);
+			SimplePickaxe.pickaxeWithModIdMap.put(modId, list);
 		return this;
 	}
 	
@@ -109,6 +109,7 @@ public class SimplePickaxe extends ItemPickaxe
 		return this;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
@@ -120,7 +121,8 @@ public class SimplePickaxe extends ItemPickaxe
 	@Override
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 	{
-		return this.toolMaterial.customCraftingMaterial == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+		return this.toolMaterial.getRepairItemStack().getItem() == par2ItemStack.getItem() 
+				? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 	
 	/**

@@ -16,8 +16,6 @@ import alexndr.api.config.types.ConfigEntry;
 import alexndr.api.config.types.ConfigValue;
 import alexndr.api.core.LogHelper;
 
-import com.google.common.collect.Lists;
-
 /**
  * @author AleXndrTheGr8st
  */
@@ -33,9 +31,10 @@ public class ConfigReader {
 		this.modName = modName;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void readEntries() {
 		String entryName;
-		List<String> entryVals = Lists.newArrayList();
+		// List<String> entryVals = Lists.newArrayList();
 		
 		try {
 			XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -63,9 +62,13 @@ public class ConfigReader {
 					}
 					
 					if(event.isStartElement()) {
-						if(entry != null && entry.getValuesList() != null) {
-							for(ConfigValue value : entry.getValuesList()) {
-								if(elementName.equals((value.getName()))) {
+						if(entry != null && entry.getValuesList() != null) 
+						{
+							List<ConfigValue> listVals = entry.getValuesList();
+							for(ConfigValue value : listVals ) 
+							{
+								if(elementName.equals((value.getName()))) 
+								{
 									event = eventReader.nextEvent();
 									value.setCurrentValue(event.asCharacters().getData());
 								}

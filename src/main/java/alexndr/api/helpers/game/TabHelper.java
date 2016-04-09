@@ -3,14 +3,12 @@ package alexndr.api.helpers.game;
 import net.minecraft.creativetab.CreativeTabs;
 import alexndr.api.core.ContentRegistry;
 import alexndr.api.core.ContentTypes;
+import alexndr.api.core.ContentTypes.CreativeTab;
 
 /**
  * @author AleXndrTheGr8st
  */
 public class TabHelper {
-	private static ContentRegistry registry;
-	private static ContentTypes.CreativeTab tabs;
-	
 	/**
 	 * Checks if a tab with the specified name exists, and returns that tab if it does.
 	 * If the tab doesn't exist, it will check if there are any available GENERAL tabs.
@@ -18,12 +16,12 @@ public class TabHelper {
 	 * @return The tab for the item/block to be placed in.
 	 */
 	public static CreativeTabs specificTab(String tabName, ContentTypes.CreativeTab tabType) {
-		if(registry.doesTabExist(tabName))
-			return registry.getTabFromName(tabName);
-		else if(registry.getFirstTabFromCategory(tabType) != null)
-			return registry.getFirstTabFromCategory(tabType);
-		else if(registry.getFirstTabFromCategory(tabs.GENERAL) != null)
-			return registry.getFirstTabFromCategory(tabs.GENERAL);
+		if(ContentRegistry.doesTabExist(tabName))
+			return ContentRegistry.getTabFromName(tabName);
+		else if(ContentRegistry.getFirstTabFromCategory(tabType) != null)
+			return ContentRegistry.getFirstTabFromCategory(tabType);
+		else if(ContentRegistry.getFirstTabFromCategory(CreativeTab.GENERAL) != null)
+			return ContentRegistry.getFirstTabFromCategory(CreativeTab.GENERAL);
 		else
 			return tabType.vanillaTab;
 	}
@@ -34,10 +32,10 @@ public class TabHelper {
 	 * @return The tab for the item/block to be placed in.
 	 */
 	public static CreativeTabs generalTab() {
-		if(registry.getFirstTabFromCategory(tabs.GENERAL) != null)
-			return registry.getFirstTabFromCategory(tabs.GENERAL);
+		if(ContentRegistry.getFirstTabFromCategory(CreativeTab.GENERAL) != null)
+			return ContentRegistry.getFirstTabFromCategory(CreativeTab.GENERAL);
 		else
-			return tabs.GENERAL.vanillaTab;
+			return CreativeTab.GENERAL.vanillaTab;
 	}
 	
 	/**
@@ -46,12 +44,12 @@ public class TabHelper {
 	 * @return The tab for the item/block to be placed in.
 	 */
 	public static CreativeTabs blocksTab() {
-		if(registry.doesTabExist("simpleOresBlock"))
-			return registry.getTabFromName("simpleOresBlocks");
-		else if(registry.getFirstTabFromCategory(tabs.BLOCKS) != null)
-			return registry.getFirstTabFromCategory(tabs.BLOCKS);
+		if(ContentRegistry.doesTabExist("simpleOresBlock"))
+			return ContentRegistry.getTabFromName("simpleOresBlocks");
+		else if(ContentRegistry.getFirstTabFromCategory(CreativeTab.BLOCKS) != null)
+			return ContentRegistry.getFirstTabFromCategory(CreativeTab.BLOCKS);
 		else
-			return tabs.BLOCKS.vanillaTab;
+			return CreativeTab.BLOCKS.vanillaTab;
 	}
 	
 	/**
@@ -60,14 +58,14 @@ public class TabHelper {
 	 * @return The tab for the item/block to be placed in.
 	 */
 	public static CreativeTabs materialsTab() {
-		if(registry.doesTabExist("simpleOresMaterials"))
-			return registry.getTabFromName("simpleOresMaterials");
-		else if(registry.doesTabExist("simpleOresBlocks"))
-			return registry.getTabFromName("simpleOresBlocks");
-		else if(registry.getFirstTabFromCategory(tabs.MATERIALS) != null)
-			return registry.getFirstTabFromCategory(tabs.MATERIALS);
+		if(ContentRegistry.doesTabExist("simpleOresMaterials"))
+			return ContentRegistry.getTabFromName("simpleOresMaterials");
+		else if(ContentRegistry.doesTabExist("simpleOresBlocks"))
+			return ContentRegistry.getTabFromName("simpleOresBlocks");
+		else if(ContentRegistry.getFirstTabFromCategory(CreativeTab.MATERIALS) != null)
+			return ContentRegistry.getFirstTabFromCategory(CreativeTab.MATERIALS);
 		else
-			return tabs.MATERIALS.vanillaTab;
+			return CreativeTab.MATERIALS.vanillaTab;
 	}
 	
 	/**
@@ -76,14 +74,14 @@ public class TabHelper {
 	 * @return The tab for the item/block to be placed in.
 	 */
 	public static CreativeTabs decorationsTab() {
-		if(registry.doesTabExist("simpleOresDecorations"))
-			return registry.getTabFromName("simpleOresDecorations");
-		else if(registry.doesTabExist("simpleOresBlocks"))
-			return registry.getTabFromName("simpleOresBlocks");
-		else if(registry.getFirstTabFromCategory(tabs.DECORATIONS) != null)
-			return registry.getFirstTabFromCategory(tabs.DECORATIONS);
+		if(ContentRegistry.doesTabExist("simpleOresDecorations"))
+			return ContentRegistry.getTabFromName("simpleOresDecorations");
+		else if(ContentRegistry.doesTabExist("simpleOresBlocks"))
+			return ContentRegistry.getTabFromName("simpleOresBlocks");
+		else if(ContentRegistry.getFirstTabFromCategory(CreativeTab.DECORATIONS) != null)
+			return ContentRegistry.getFirstTabFromCategory(CreativeTab.DECORATIONS);
 		else
-			return tabs.DECORATIONS.vanillaTab;
+			return CreativeTab.DECORATIONS.vanillaTab;
 	}
 	
 	/**
@@ -92,14 +90,14 @@ public class TabHelper {
 	 * @return The tabfor the item/block to be placed in.
 	 */
 	public static CreativeTabs toolsTab() {
-		if(registry.doesTabExist("simpleOresTools"))
-			return registry.getTabFromName("simpleOresTools");
-		else if(registry.doesTabExist("simpleOresBlocks"))
-			return registry.getTabFromName("simpleOresBlocks");
-		else if(registry.getFirstTabFromCategory(tabs.TOOLS) != null)
-			return registry.getFirstTabFromCategory(tabs.TOOLS);
+		if(ContentRegistry.doesTabExist("simpleOresTools"))
+			return ContentRegistry.getTabFromName("simpleOresTools");
+		else if(ContentRegistry.doesTabExist("simpleOresBlocks"))
+			return ContentRegistry.getTabFromName("simpleOresBlocks");
+		else if(ContentRegistry.getFirstTabFromCategory(CreativeTab.TOOLS) != null)
+			return ContentRegistry.getFirstTabFromCategory(CreativeTab.TOOLS);
 		else
-			return tabs.TOOLS.vanillaTab;
+			return CreativeTab.TOOLS.vanillaTab;
 	}
 	
 	/**
@@ -108,14 +106,14 @@ public class TabHelper {
 	 * @return The tab for the item/block to be placed in.
 	 */
 	public static CreativeTabs combatTab() {
-		if(registry.doesTabExist("simpleOresCombat"))
-			return registry.getTabFromName("simpleOresCombat");
-		else if(registry.doesTabExist("simpleOresBlocks"))
-			return registry.getTabFromName("simpleOresBlocks");
-		else if(registry.getFirstTabFromCategory(tabs.COMBAT) != null)
-			return registry.getFirstTabFromCategory(tabs.COMBAT);
+		if(ContentRegistry.doesTabExist("simpleOresCombat"))
+			return ContentRegistry.getTabFromName("simpleOresCombat");
+		else if(ContentRegistry.doesTabExist("simpleOresBlocks"))
+			return ContentRegistry.getTabFromName("simpleOresBlocks");
+		else if(ContentRegistry.getFirstTabFromCategory(CreativeTab.COMBAT) != null)
+			return ContentRegistry.getFirstTabFromCategory(CreativeTab.COMBAT);
 		else
-			return tabs.COMBAT.vanillaTab;
+			return CreativeTab.COMBAT.vanillaTab;
 	}
 	
 	/**
@@ -124,9 +122,9 @@ public class TabHelper {
 	 * @return The tab for the item/block to be placed in.
 	 */
 	public static CreativeTabs otherTab() {
-		if(registry.getFirstTabFromCategory(tabs.OTHER) != null)
-			return registry.getFirstTabFromCategory(tabs.OTHER);
+		if(ContentRegistry.getFirstTabFromCategory(CreativeTab.OTHER) != null)
+			return ContentRegistry.getFirstTabFromCategory(CreativeTab.OTHER);
 		else 
-			return tabs.OTHER.vanillaTab;
+			return CreativeTab.OTHER.vanillaTab;
 	}
 }

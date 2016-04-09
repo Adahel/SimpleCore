@@ -17,6 +17,7 @@ public class OreGenHelper extends WorldGenerator
 	private Block replaceableOreGenBlock = Blocks.stone;
 	private boolean disableReplaceableOreGenBlock = false;
 	private int blockGeneratedMeta;
+	@SuppressWarnings("unused")
 	private int blockToReplaceMeta;
 	private int numberOfBlocks;
 	

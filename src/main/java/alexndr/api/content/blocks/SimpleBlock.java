@@ -54,10 +54,10 @@ public class SimpleBlock extends Block
 		List<SimpleBlock> list = Lists.newArrayList();
 		list.add(this);
 		this.modId = modId;
-		if(this.blockWithModIdMap.containsKey(modId))
-			this.blockWithModIdMap.get(modId).add(this);
+		if(SimpleBlock.blockWithModIdMap.containsKey(modId))
+			SimpleBlock.blockWithModIdMap.get(modId).add(this);
 		else
-			this.blockWithModIdMap.put(modId, list);
+			SimpleBlock.blockWithModIdMap.put(modId, list);
 		return this;
 	}
 	

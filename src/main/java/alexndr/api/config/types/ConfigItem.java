@@ -10,7 +10,7 @@ import com.google.common.collect.Lists;
 public class ConfigItem extends ConfigEntry{	
 	private List<ConfigValue> values = Lists.newArrayList();
 	
-	private ConfigValue maxStackSize = new ConfigValue("MaxStackSize");
+	// private ConfigValue maxStackSize = new ConfigValue("MaxStackSize");
 	
 	public ConfigItem(String name, String category) {
 		super(name, category);

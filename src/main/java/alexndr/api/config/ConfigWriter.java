@@ -27,6 +27,7 @@ import com.google.common.collect.Lists;
 public class ConfigWriter {
 	private File file;
 	private String lastCategoryName = "";
+	@SuppressWarnings("unused")
 	private String modName = "";
 	private List<String> categories = Lists.newArrayList();
 	

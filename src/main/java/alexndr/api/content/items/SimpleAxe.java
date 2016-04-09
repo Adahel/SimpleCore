@@ -63,10 +63,10 @@ public class SimpleAxe extends ItemAxe
 		List<SimpleAxe> list = Lists.newArrayList();
 		list.add(this);
 		this.modId = modId;
-		if(this.axeWithModIdMap.containsKey(modId))
-			this.axeWithModIdMap.get(modId).add(this);
+		if(SimpleAxe.axeWithModIdMap.containsKey(modId))
+			SimpleAxe.axeWithModIdMap.get(modId).add(this);
 		else
-			this.axeWithModIdMap.put(modId, list);
+			SimpleAxe.axeWithModIdMap.put(modId, list);
 		return this;
 	}
 	
@@ -109,6 +109,7 @@ public class SimpleAxe extends ItemAxe
 		return this;
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List list, boolean bool)
 	{
@@ -120,7 +121,8 @@ public class SimpleAxe extends ItemAxe
 	@Override
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 	{
-		return this.toolMaterial.customCraftingMaterial == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+		return this.toolMaterial.getRepairItemStack().getItem() == par2ItemStack.getItem() 
+				? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 	
 	/**

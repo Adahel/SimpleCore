@@ -30,6 +30,7 @@ public class SimpleArmor extends ItemArmor
 	private static int renderer;
 	private int slotnumber;
 	private List<String> toolTipStrings = Lists.newArrayList();
+	@SuppressWarnings("unused")
 	private String modId, texturePath, type;
 	
 	/**
@@ -67,10 +68,10 @@ public class SimpleArmor extends ItemArmor
 		List<SimpleArmor> list = Lists.newArrayList();
 		list.add(this);
 		this.modId = modId;
-		if(this.armorWithModIdMap.containsKey(modId))
-			this.armorWithModIdMap.get(modId).add(this);
+		if(SimpleArmor.armorWithModIdMap.containsKey(modId))
+			SimpleArmor.armorWithModIdMap.get(modId).add(this);
 		else
-			this.armorWithModIdMap.put(modId, list);
+			SimpleArmor.armorWithModIdMap.put(modId, list);
 		return this;
 	}
 	
@@ -112,6 +113,7 @@ public class SimpleArmor extends ItemArmor
 		return this;
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool)
 	{
