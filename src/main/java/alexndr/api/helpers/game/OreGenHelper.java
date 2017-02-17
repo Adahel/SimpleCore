@@ -13,6 +13,8 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import com.google.common.base.Predicate;
 
+import mcjty.lib.tools.MathTools;
+
 /**
  * @author AleXndrTheGr8st
  */
@@ -96,12 +98,12 @@ public class OreGenHelper extends WorldGenerator
 			double var1 = random.nextDouble() * this.veinSize / 16.0D;
 			double var2 = (MathHelper.sin((float)Math.PI * ratio) + 1.0F) * var1 + 1.0D;
 			double var3 = (MathHelper.sin((float)Math.PI * ratio) + 1.0F) * var1 + 1.0D;
-			int chunkXMin = MathHelper.floor_double(randX - var2 / 2.0D);
-			int chunkYMin = MathHelper.floor_double(randY - var3 / 2.0D);
-			int chunkZMin = MathHelper.floor_double(randZ - var2 / 2.0D);
-			int chunkXMax = MathHelper.floor_double(randX + var2 / 2.0D);
-			int chunkYMax = MathHelper.floor_double(randY + var3 / 2.0D);
-			int chunkZMax = MathHelper.floor_double(randZ + var2 / 2.0D);
+			int chunkXMin = MathTools.floor(randX - var2 / 2.0D);
+			int chunkYMin = MathTools.floor(randY - var3 / 2.0D);
+			int chunkZMin = MathTools.floor(randZ - var2 / 2.0D);
+			int chunkXMax = MathTools.floor(randX + var2 / 2.0D);
+			int chunkYMax = MathTools.floor(randY + var3 / 2.0D);
+			int chunkZMax = MathTools.floor(randZ + var2 / 2.0D);
 			
 			for(int chunkX = chunkXMin; chunkX <= chunkXMax; ++chunkX) {
 				double var4 = (chunkX + 0.5D - randX) / (var2 / 2.0D);

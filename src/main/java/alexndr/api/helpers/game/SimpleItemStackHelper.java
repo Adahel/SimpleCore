@@ -17,16 +17,16 @@ import net.minecraft.nbt.NBTTagList;
  */
 public class SimpleItemStackHelper extends ItemStackHelper 
 {
-    public static ItemStack getAndRemove(ItemStackList stacks, int index)
-    {
-        return ItemStackHelper.getAndRemove((ItemStack[]) stacks.toArray(), index);
-    }
-    
     public static ItemStack getAndSplit(ItemStackList stacks, int index, int amount)
     {
-        return ItemStackHelper.getAndSplit((ItemStack[]) stacks.toArray(), index, amount);
+    	return ItemStackHelper.getAndSplit((ItemStack[]) stacks.toArray(), index, amount);
     }
 
+    public static ItemStack getAndRemove(ItemStackList stacks, int index)
+    {
+    	return ItemStackHelper.getAndRemove((ItemStack[]) stacks.toArray(), index);
+    }
+    
     public static void read_itemStackFromNBT(NBTTagCompound compound, ItemStackList stacklist)
     {
         NBTTagList nbttaglist = compound.getTagList("Items", 10);
