@@ -123,7 +123,7 @@ public class SimpleBlock extends Block implements IConfigureBlockHelper<SimpleBl
 	{
         super.dropBlockAsItemWithChance(worldIn, pos, state, chance, fortune);
         if(this.getItemDropped(state, worldIn.rand, fortune) != Item.getItemFromBlock(this)) {
-        	int amount = MathHelper.getInt(worldIn.rand, 16, 33);
+        	int amount = MathHelper.getRandomIntegerInRange(worldIn.rand, 16, 33);
         	this.dropXpOnBlockBreak(worldIn, pos, amount);
         }
 	}
