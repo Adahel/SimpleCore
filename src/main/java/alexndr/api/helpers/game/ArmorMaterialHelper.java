@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
  */
 public class ArmorMaterialHelper
 {
-    public ArmorMaterial setRepairItem(ArmorMaterial material, ItemStack stack)
+    public static ArmorMaterial setRepairItem(ArmorMaterial material, ItemStack stack)
     {
         // BEGIN 1.10.2 version
         if (material.customCraftingMaterial != null) {
