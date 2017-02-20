@@ -7,8 +7,10 @@ import javax.annotation.Nullable;
 
 import alexndr.api.content.blocks.SimpleFurnace;
 import alexndr.api.helpers.game.SimpleItemStackHelper;
+import mcjty.lib.compat.CompatSidedInventory;
 import mcjty.lib.tools.ItemStackList;
 import mcjty.lib.tools.ItemStackTools;
+import mcjty.lib.tools.MathTools;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +20,6 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
@@ -33,7 +34,6 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.datafix.FixTypes;
 import net.minecraft.util.datafix.walkers.ItemStackDataLists;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -43,7 +43,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  *
  */
 public class TileEntitySimpleFurnace extends TileEntityLockable implements
-		ITickable, ISidedInventory 
+		ITickable, CompatSidedInventory 
 {
     protected static final int NDX_INPUT_SLOT = 0;
     protected static final int NDX_FUEL_SLOT = 1;
@@ -161,7 +161,7 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
 	 * @see net.minecraft.inventory.IInventory#isUseableByPlayer(net.minecraft.entity.player.EntityPlayer)
 	 */
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUsable(EntityPlayer player) {
         return this.getWorld().getTileEntity(this.pos) != this 
                  ? false 
                  : player.getDistanceSq((double)this.pos.getX() + 0.5D, 
@@ -280,7 +280,8 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
 
     public static void registerFixesFurnace(DataFixer fixer)
     {
-        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists("Furnace", new String[] {"Items"}));
+        fixer.registerWalker(FixTypes.BLOCK_ENTITY, 
+        					 new ItemStackDataLists("Furnace", new String[] {"Items"}));
     }
 
 
@@ -408,7 +409,7 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
             } // end-if isBurnning && valid FUEL && valid INPUT
             else if (!this.isBurning() && this.cookTime > 0)
             {
-                this.cookTime = MathHelper.clamp_int(this.cookTime - 2, 0, this.totalCookTime);
+                this.cookTime = MathTools.clamp(this.cookTime - 2, 0, this.totalCookTime);
             }
 
             if (flag != this.isBurning())
@@ -532,9 +533,9 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
             	ItemStackTools.incStackSize(itemstack2, ItemStackTools.getStackSize(itemstack1));
             }
             if (itemstack.getItem() == Item.getItemFromBlock(Blocks.SPONGE) 
-                && itemstack.getMetadata() == 1 
-                && ItemStackTools.isValid(this.furnaceItemStacks.get(NDX_FUEL_SLOT)) 
-                && (this.furnaceItemStacks.get(NDX_FUEL_SLOT)).getItem() == Items.BUCKET)
+            	&& itemstack.getMetadata() == 1 
+            	&& ItemStackTools.isValid(this.furnaceItemStacks.get(NDX_FUEL_SLOT)) 
+            	&& (this.furnaceItemStacks.get(NDX_FUEL_SLOT)).getItem() == Items.BUCKET)
             {
                 this.furnaceItemStacks.set(NDX_FUEL_SLOT, new ItemStack(Items.WATER_BUCKET));
             }
