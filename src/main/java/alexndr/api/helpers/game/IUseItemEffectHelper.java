@@ -32,4 +32,9 @@ public interface IUseItemEffectHelper
 			World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing,
 			float hitX, float hitY, float hitZ);
 
+	public abstract EnumActionResult clOnItemUse(EntityPlayer playerIn, World worldIn, 
+	                                             BlockPos pos, EnumHand hand, EnumFacing facing, 
+	                                             float hitX, float hitY, float hitZ);
+
 } // end interface
+
