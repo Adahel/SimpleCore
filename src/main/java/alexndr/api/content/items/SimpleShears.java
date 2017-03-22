@@ -2,8 +2,15 @@ package alexndr.api.content.items;
 
 import java.util.List;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import alexndr.api.config.types.ConfigTool;
 import alexndr.api.helpers.game.IConfigureItemHelper;
@@ -47,6 +54,29 @@ public class SimpleShears extends ItemShears implements IConfigureItemHelper<Sim
 		return this;
 	}
 	
+    /* lifted from McJty's CompatTool class for 1.10 */
+    protected ActionResult<ItemStack> clOnItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+         return super.onItemRightClick(playerIn.getHeldItem(hand), worldIn, playerIn, hand);
+     }
+
+     @Override
+     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+         return clOnItemRightClick(worldIn, playerIn, hand);
+     }
+
+     /**
+      * Called when a Block is right-clicked with this Item
+      */
+     @Override
+     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+         return clOnItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+     }
+
+     protected EnumActionResult clOnItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+         return super.onItemUse(playerIn.getHeldItem(hand), playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+     }
+     /* end McJty borrowings */
+
 	/**
 	 * Returns the ConfigTool used by this tool.
 	 * @return ConfigTool
