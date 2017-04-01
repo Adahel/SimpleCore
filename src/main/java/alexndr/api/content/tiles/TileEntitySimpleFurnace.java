@@ -81,6 +81,7 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
 	public TileEntitySimpleFurnace(String tileName, int max_cook_time,
 								   String guiID, int furnace_stack_count) 
 	{
+	    super();
 		this.furnaceName = tileName;
 		this.maxCookTime = max_cook_time;
 		this.furnaceGuiId = guiID;
@@ -116,11 +117,13 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
         return SimpleItemStackHelper.getAndSplit(this.furnaceItemStacks, index, count);
 	} // end decrStackSize()
 
-	/* (non-Javadoc)
+	 /**
+     * Removes a stack from the given slot and returns it.
 	 * @see net.minecraft.inventory.IInventory#removeStackFromSlot(int)
 	 */
 	@Override
-	public ItemStack removeStackFromSlot(int index) {
+	public ItemStack removeStackFromSlot(int index) 
+	{
 	       return SimpleItemStackHelper.getAndRemove(this.furnaceItemStacks, index);
 	}
 
@@ -146,7 +149,6 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
             this.cookTime = 0;
             this.markDirty();
         }
-
 	} // end ()
 
 	/* (non-Javadoc)

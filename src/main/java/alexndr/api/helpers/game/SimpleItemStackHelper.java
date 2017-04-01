@@ -3,6 +3,8 @@
  */
 package alexndr.api.helpers.game;
 
+import javax.annotation.Nullable;
+
 import mcjty.lib.tools.ItemStackList;
 import mcjty.lib.tools.ItemStackTools;
 import net.minecraft.inventory.ItemStackHelper;
@@ -17,16 +19,43 @@ import net.minecraft.nbt.NBTTagList;
  */
 public class SimpleItemStackHelper extends ItemStackHelper 
 {
+    @Nullable
     public static ItemStack getAndSplit(ItemStackList stacks, int index, int amount)
     {
-    	return ItemStackHelper.getAndSplit((ItemStack[]) stacks.toArray(), index, amount);
-    }
+        if (index >= 0 && index < stacks.size() && ItemStackTools.isValid(stacks.get(index))
+                       && amount > 0)
+        {
+            ItemStack itemstack = stacks.get(index).splitStack(amount);
 
+            if (ItemStackTools.isEmpty(stacks.get(index)))
+            {
+                stacks.set(index, ItemStackTools.getEmptyStack());
+            }
+
+            return itemstack;
+        }
+        else
+        {
+            return ItemStackTools.getEmptyStack();
+        }
+    } // end getAndSplit()
+    
+    
+    @Nullable
     public static ItemStack getAndRemove(ItemStackList stacks, int index)
     {
-    	return ItemStackHelper.getAndRemove((ItemStack[]) stacks.toArray(), index);
-    }
-    
+        if (index >= 0 && index < stacks.size())
+        {
+            ItemStack itemstack = stacks.get(index);
+            stacks.set(index, ItemStackTools.getEmptyStack());
+            return itemstack;
+        }
+        else
+        {
+            return ItemStackTools.getEmptyStack();
+        }
+    } // end getAndRemove() 
+
     public static void read_itemStackFromNBT(NBTTagCompound compound, ItemStackList stacklist)
     {
         NBTTagList nbttaglist = compound.getTagList("Items", 10);
