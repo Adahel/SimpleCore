@@ -6,6 +6,7 @@ package alexndr.api.content.tiles;
 import javax.annotation.Nullable;
 
 import alexndr.api.content.blocks.SimpleFurnace;
+import alexndr.api.helpers.game.FurnaceHelper;
 import alexndr.api.helpers.game.SimpleItemStackHelper;
 import mcjty.lib.compat.CompatSidedInventory;
 import mcjty.lib.tools.ItemStackList;
@@ -136,7 +137,8 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
         ItemStack itemstack = (ItemStack)this.getStackInSlot(index);
         boolean flag = ItemStackTools.isValid(stack) && stack.isItemEqual(itemstack) 
         		&& ItemStack.areItemStackTagsEqual(stack, itemstack);
-        this.furnaceItemStacks.set(index, stack);
+        
+        FurnaceHelper.SetInSlot(this.furnaceItemStacks, index, stack);
 
         if (ItemStackTools.getStackSize(stack) > this.getInventoryStackLimit())
         {
