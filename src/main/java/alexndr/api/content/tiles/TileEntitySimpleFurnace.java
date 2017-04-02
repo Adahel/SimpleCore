@@ -398,8 +398,7 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
                     if (this.cookTime == this.totalCookTime)
                     {
                         this.cookTime = 0;
-                        this.totalCookTime = this.getCookTime(
-                        		this.getStackInSlot(NDX_INPUT_SLOT));
+                        this.totalCookTime = this.getCookTime(this.getStackInSlot(NDX_INPUT_SLOT));
                         this.smeltItem();
                         flag1 = true;
                     }
