@@ -359,7 +359,8 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
 	{
         boolean flag = this.isBurning();
         boolean flag1 = false;
-
+        int burnTime = 0;
+        
         if (this.isBurning())
         {
             --this.furnaceBurnTime;
@@ -367,7 +368,11 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
 
         if (!this.getWorld().isRemote)
         {
-            flag1 = default_cooking_update(flag1);
+            ItemStack itemstack = (ItemStack)this.getStackInSlot(NDX_FUEL_SLOT);
+            if (ItemStackTools.isValid(itemstack)) {
+                burnTime = TileEntitySimpleFurnace.getItemBurnTime(itemstack);
+            }
+            flag1 = default_cooking_update(flag1, itemstack, burnTime);
             if (flag != this.isBurning())
             {
                 flag1 = true;
@@ -485,7 +490,7 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
                 FurnaceHelper.SetInSlot(furnaceItemStacks, NDX_OUTPUT_SLOT, 
                                         ItemStackTools.safeCopy(result_stack));
             }
-            else if (outstack.getItem() == result_stack.getItem())
+            else if (ItemStack.areItemsEqual(outstack, result_stack))
             {
             	ItemStackTools.incStackSize(outstack, ItemStackTools.getStackSize(result_stack));
             }
@@ -498,7 +503,8 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
                                         new ItemStack(Items.WATER_BUCKET));
             }
 
-            ItemStackTools.incStackSize(instack, -1);
+            //ItemStackTools.incStackSize(instack, -1);
+            this.decrStackSize(NDX_INPUT_SLOT, 1);
         }
     } // end smeltItem()
 
@@ -593,28 +599,33 @@ public class TileEntitySimpleFurnace extends TileEntityLockable implements
         return true;
 	}
     
-	protected boolean default_cooking_update(boolean flag1)
+	/**
+	 * guts of the usual furnace update code, which is mostly generic.
+	 * @param flag1
+	 * @param itemstackFuel ItemStack in fuel slot
+	 * @param burnTime burnTime on itemstackFuel.
+	 * @return
+	 */
+	protected boolean default_cooking_update(boolean flag1, ItemStack itemstackFuel, int burnTime)
 	{
-        ItemStack itemstack = (ItemStack)this.getStackInSlot(NDX_FUEL_SLOT);
-        
-        if (this.isBurning() || ItemStackTools.isValid(itemstack) 
+        if (this.isBurning() || ItemStackTools.isValid(itemstackFuel) 
             &&  ItemStackTools.isValid(this.getStackInSlot(NDX_INPUT_SLOT)))
         {
             if (!this.isBurning() && this.canSmelt())
             {
-                this.furnaceBurnTime = getItemBurnTime(itemstack);
+                this.furnaceBurnTime = burnTime;
                 this.currentItemBurnTime = this.furnaceBurnTime;
 
                 if (this.isBurning())
                 {
                     flag1 = true;
 
-                    if (ItemStackTools.isValid(itemstack))
+                    if (ItemStackTools.isValid(itemstackFuel))
                     {
-                        Item item = itemstack.getItem();
-                        ItemStackTools.incStackSize(itemstack, -1);
-                        if (ItemStackTools.isEmpty(itemstack)) {
-                            ItemStack item1 = item.getContainerItem(itemstack);
+                        Item item = itemstackFuel.getItem();
+                        ItemStackTools.incStackSize(itemstackFuel, -1);
+                        if (ItemStackTools.isEmpty(itemstackFuel)) {
+                            ItemStack item1 = item.getContainerItem(itemstackFuel);
                             this.furnaceItemStacks.set(NDX_FUEL_SLOT, item1);
                         }
                     }
