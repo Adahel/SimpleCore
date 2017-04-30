@@ -9,23 +9,17 @@ Roadmap of Future releases
 
 ### Soonish:
 
-- ~~revise to support 1.11 with CompatLayer changes~~ DONE for SimpleCore, SimpleOres2, Netherrocks, Fusion.
 - add support for config GUI to all 4
 - restructure dependencies so that alloy blocks/items can be added without
 requiring Fusion installed (because other industrial mods have alloy furnaces)
-- ~~port Machines to 1.10.2~~ DONE/ALPHA RELEASED
-- ~~add support for JEI to Fusion Furnace~~ DONE
-- ~~re-factor IItemHandler-based stuff to be useful in Machines, too.~~ PROBABLY DONE
-- ~~port Aesthetics to 1.10.2~~ BETA RELEASED
 - remove config options for properties that should not be configured. STARTED 
-- ~~re-visit SimpleBucket code and models. They probably aren't quite right.~~ DONE. The old ways are best.
+- port akkkamaddi's Additions (see that thread later on). STARTED
+- re-write config system to use JSON instead of XML. STARTED
 
 ### Later/other:
 
 - add ModTweaker support for Fusion Furnace recipes.
-- port akkkamaddi's Additions (see that thread later on)
 - add optional recipes for other mods' alloy furnaces.
-- re-write config system to use JSON instead of XML
 - remove ISidedInventory support and wrappers and go pure capability. -- Let's NOT and say we did.
 - ~~explore non-consumed catalyst option~~ Explored on Forum. Not popular idea.
 - ~~add a Zinc plugin (Sinhika's Simple Zinc?) with Brass alloy for use with
