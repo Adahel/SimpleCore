@@ -1,0 +1,14 @@
+
+# Tabs
+itemGroup.SimpleBlocks=Прості блоки
+itemGroup.SimpleDecorations=Проста декорація
+itemGroup.SimpleMaterials=Прості матеріали
+itemGroup.SimpleTools=Прості інструменти
+itemGroup.SimpleCombat=Просте спорядження
+itemGroup.SimpleMachines=Прості машини
+
+# Blocks
+tile.test_furnace.name=Тестовий блок печі
+
+container.test_furnace=Тестовий контейнер печі
+
