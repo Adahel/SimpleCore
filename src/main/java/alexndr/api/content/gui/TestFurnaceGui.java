@@ -11,9 +11,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class TestFurnaceGui extends SimpleFurnaceGui 
 {
-//    protected static final ResourceLocation furnaceGuiTextures 
-//		= new ResourceLocation(APIInfo.ID,
-//						   "textures/gui/container/test_furnace.png");
 
 	public TestFurnaceGui(InventoryPlayer player, TestFurnaceTileEntity iinv) 
 	{
