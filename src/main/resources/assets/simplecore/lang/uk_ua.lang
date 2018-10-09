@@ -9,6 +9,7 @@ itemGroup.SimpleMachines=Прості машини
 
 # Blocks
 tile.test_furnace.name=Тестовий блок печі
+tile.lit_test_furnace.name=Тестовий блок печі
 
 container.test_furnace=Тестовий контейнер печі
 
