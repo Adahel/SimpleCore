@@ -20,6 +20,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -74,6 +75,19 @@ public abstract class SimpleFurnace<TEF extends TileEntitySimpleFurnace> extends
 	    setUnlit_furnace(Blocks.FURNACE);
 	} // end ctor()
 	
+	
+	/**
+	 * Always override this, or you will not get a furnace back.
+	 * @see alexndr.api.content.blocks.SimpleBlock#getItemDropped(net.minecraft.block.state.IBlockState, java.util.Random, int)
+	 */
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) 
+	{
+		// TODO Auto-generated method stub
+		return Item.getItemFromBlock(Blocks.FURNACE);
+	}
+
+
 	/**
 	 * Sets the ConfigBlock to be used for this block.
 	 * @param entry ConfigBlock
@@ -266,7 +280,9 @@ public abstract class SimpleFurnace<TEF extends TileEntitySimpleFurnace> extends
             }
         }
 
-        super.breakBlock(worldIn, pos, state);
+        // do not call, as this removes tileentity for NON-containers. SimpleFurnace
+        // needs to act like a blockContainer, even if it isn't one.
+        // super.breakBlock(worldIn, pos, state);
     } // end ()
 
     @Override

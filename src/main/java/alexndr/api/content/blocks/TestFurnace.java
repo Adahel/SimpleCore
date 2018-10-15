@@ -1,5 +1,7 @@
 package alexndr.api.content.blocks;
 
+import java.util.Random;
+
 import alexndr.api.content.tiles.TestFurnaceTileEntity;
 import alexndr.api.core.SimpleCoreAPI;
 import alexndr.api.helpers.game.TestFurnaceGuiHandler;
@@ -9,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -25,6 +28,16 @@ public class TestFurnace extends SimpleFurnace<TestFurnaceTileEntity>
 	{
 		super(furnace_name, plugin, Material.ROCK, ContentCategories.Block.MACHINE, isActive);
 	}
+
+	
+	/* (non-Javadoc)
+	 * @see alexndr.api.content.blocks.SimpleFurnace#getItemDropped(net.minecraft.block.state.IBlockState, java.util.Random, int)
+	 */
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(TestFurnace.unlit_furnace);
+	}
+
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
