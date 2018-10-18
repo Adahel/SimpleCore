@@ -16,11 +16,14 @@ import alexndr.api.registry.Plugin;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.statemap.IStateMapper;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 
 /**
  * @author cyhiggin
@@ -53,6 +56,17 @@ public class SimpleDoor extends BlockDoor implements IConfigureBlockHelper<Simpl
         this.ItemOfDoorResource = new ResourceLocation(plugin.getModId(), itemOfBlockName);
 		setUnlocalizedName(name);
 		setRegistryName(plugin.getModId(), name);
+    }
+    
+    /**
+     * we need to register a custom state-mapper for doors, because of the 'powered'
+     * property that isn't used for graphics.  Should only be called from client-side proxy.
+     */
+    
+    public void setCustomStateMapper()
+    {
+    	IStateMapper doorMapper = new StateMap.Builder().ignore(BlockDoor.POWERED).build();
+    	ModelLoader.setCustomStateMapper(this, doorMapper);
     }
     
     // we don't register the door block as an item. Instead we register the door item as itself.

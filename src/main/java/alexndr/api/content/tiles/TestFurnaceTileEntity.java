@@ -36,7 +36,8 @@ public class TestFurnaceTileEntity extends TileEntitySimpleFurnace
 	 * @see alexndr.api.content.tiles.TileEntitySimpleFurnace#update()
 	 */
 	@Override
-	public void update() {
+	public void update() 
+	{
         boolean was_burning_flag = this.isBurning();
         boolean flag1 = false;
         int burnTime = 0;
