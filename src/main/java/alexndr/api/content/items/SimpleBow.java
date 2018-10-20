@@ -262,8 +262,7 @@ public class SimpleBow extends ItemBow
 
                 if ((double)f >= 0.1D)
                 {
-                    boolean flag1 = flag && itemstack.getItem() instanceof ItemArrow; //Forge: Fix consuming custom arrows.
-
+                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow && ((ItemArrow) itemstack.getItem()).isInfinite(itemstack, stack, entityplayer));
                     if (!worldIn.isRemote)
                     {
                         ItemArrow itemarrow = (ItemArrow)((ItemArrow)(itemstack.getItem() instanceof ItemArrow ? itemstack.getItem() : Items.ARROW));
@@ -315,7 +314,7 @@ public class SimpleBow extends ItemBow
         				}
                         stack.damageItem(1, entityplayer);
 
-                        if (flag1 || efficient)
+                        if (flag1 || entityplayer.capabilities.isCreativeMode && (itemstack.getItem() == Items.SPECTRAL_ARROW || itemstack.getItem() == Items.TIPPED_ARROW))
                         {
                             entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
                         }
@@ -328,7 +327,7 @@ public class SimpleBow extends ItemBow
                     		SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 
                     		1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
-                    if (!flag1 && !efficient)
+                    if (!flag1 && !efficient && !entityplayer.capabilities.isCreativeMode)
                     {
                     	itemstack.shrink(1);
                         if (itemstack.isEmpty())
