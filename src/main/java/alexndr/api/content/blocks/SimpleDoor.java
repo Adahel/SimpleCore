@@ -24,6 +24,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * @author cyhiggin
@@ -62,7 +64,7 @@ public class SimpleDoor extends BlockDoor implements IConfigureBlockHelper<Simpl
      * we need to register a custom state-mapper for doors, because of the 'powered'
      * property that isn't used for graphics.  Should only be called from client-side proxy.
      */
-    
+    @SideOnly(Side.CLIENT)
     public void setCustomStateMapper()
     {
     	IStateMapper doorMapper = new StateMap.Builder().ignore(BlockDoor.POWERED).build();
