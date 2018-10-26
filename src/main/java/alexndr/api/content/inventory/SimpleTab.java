@@ -38,7 +38,6 @@ public class SimpleTab extends CreativeTabs
 
 	@Override
 	public ItemStack getTabIconItem() {
-		// TODO Auto-generated method stub
 		return new ItemStack(itemForIcon);
 	}
 } // end class

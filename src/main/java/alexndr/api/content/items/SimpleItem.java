@@ -18,7 +18,6 @@ public class SimpleItem extends Item implements IConfigureItemHelper<SimpleItem,
 {
 	protected String name;
 	private Plugin plugin;
-//	private ContentCategories.Item category;
 	private ConfigItem entry;
 	@SuppressWarnings("unused")
 	private List<String> toolTipStrings = Lists.newArrayList();
