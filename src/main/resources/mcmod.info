@@ -1,15 +1,15 @@
 [
 {
 "modid": "simplecore",
-"name": "SimpleCore API",
-"description": "An API for easy creation of plugins such as SimpleOres, Fusion and others",
+"name": "SimpleCore API Unofficial",
+"description": "An API for easy creation of plugins such as SimpleOres, Fusion and others. Fixed the interaction between SimpleCore API and Minecraft Beacon by Adahel.",
 "version": "${version}",
 "credits": "Created by AleXndrTheGr8st, updated by Sinhika",
 "logoFile": "/assets/simplecore/logos/SimpleCore.png",
 "mcversion": "${mcversion}",
 "url": "http://minecraft.curseforge.com/projects/simplecore-api",
 "updateUrl": "http://minecraft.curseforge.com/projects/simplecore-api/files",
-"authorList": [ "AleXndrTheGr8st", "Sinhika" ],
+"authorList": [ "AleXndrTheGr8st", "Sinhika", "Adahel" ],
 "parent":"",
 "screenshots": [],
 "dependencies": []

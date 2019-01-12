@@ -149,7 +149,7 @@ public class SimpleBlock extends Block {
 	@Override
 	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beaconPos) {
 		if(entry.getValueByName("BeaconBase") != null && entry.getValueByName("BeaconBase").isActive()){
-			return entry.getIsLeaves();
+			return entry.getBeaconBase();
 		}
 		return false;
 	}

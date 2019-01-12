@@ -3,6 +3,9 @@ package alexndr.api.content.items;
 import java.util.List;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import alexndr.api.config.types.ConfigItem;
 import alexndr.api.helpers.game.TooltipHelper;
@@ -68,6 +71,14 @@ public class SimpleItem extends Item {
 	public SimpleItem addToolTip(String toolTip) {
 		TooltipHelper.addTooltipToItem(this, toolTip);
 		return this;
+	}
+	
+	@Override
+    public boolean isBeaconPayment(ItemStack stack) {
+		if(entry.getValueByName("BeaconPayment") != null && entry.getValueByName("BeaconPayment").isActive()){
+			return entry.getBeaconPayment();
+		}
+		return false;
 	}
 	
 	public void setAdditionalProperties() {
